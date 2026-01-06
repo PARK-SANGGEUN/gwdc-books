@@ -1,210 +1,159 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>강원진학지원센터 입시분석팀 서재</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
     body {
       margin: 0;
-      font-family: 'Segoe UI', sans-serif;
-      background: linear-gradient(#dce9f2, #eaf3fa);
+      font-family: 'Arial', sans-serif;
+      background: linear-gradient(to bottom, #edf3fb, #fefefe);
     }
 
-    .title {
+    h1 {
       text-align: center;
-      font-size: 2.5rem;
+      font-size: 2.5em;
+      color: #0d47a1;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+      margin-top: 40px;
+      margin-bottom: 20px;
+    }
+
+    .section-title {
+      font-size: 1.4em;
       font-weight: bold;
-      color: #005b94;
-      text-shadow: 2px 2px 5px rgba(0,0,0,0.3);
-      margin-top: 30px;
-    }
-
-    .title::before {
-      content: "📘 ";
-    }
-
-    .curtain {
-      background: radial-gradient(ellipse at top left, #c5d5f2, #ffffff);
-      padding: 20px;
-    }
-
-    .lamp {
-      width: 40px;
-      height: 40px;
-      background: radial-gradient(circle, #fff6d1, #f0c000, #b88700);
-      border-radius: 50%;
-      margin: 0 auto 10px;
-      box-shadow: 0 0 25px 10px rgba(255, 230, 150, 0.4);
-      animation: flicker 1.5s infinite ease-in-out;
-    }
-
-    @keyframes flicker {
-      0%, 100% { opacity: 1; }
-      50% { opacity: 0.6; }
-    }
-
-    .bookshelf-section {
-      padding: 10px 5vw 40px;
-    }
-
-    h2 {
-      font-size: 1.2rem;
-      margin-left: 10px;
+      margin: 30px 0 10px 30px;
       display: flex;
       align-items: center;
-      gap: 6px;
+      color: #444;
     }
 
-    h2::before {
-      content: "🔹";
-      font-size: 1rem;
+    .section-title::before {
+      content: '📘';
+      margin-right: 10px;
     }
 
-    .bookshelf {
+    .shelf-container {
       display: flex;
       flex-wrap: wrap;
-      gap: 30px;
-      background: linear-gradient(145deg, #d2b48c, #b5936b);
-      border-radius: 10px;
-      padding: 30px;
-      box-shadow: inset -5px -5px 10px rgba(255,255,255,0.3),
-                  inset 5px 5px 10px rgba(0,0,0,0.1),
-                  5px 5px 20px rgba(0,0,0,0.3);
-    }
-
-    .shelf-slot {
-      flex: 1 1 150px;
-      max-width: 200px;
-      height: 280px;
-      perspective: 1000px;
-      display: flex;
       justify-content: center;
-      align-items: center;
+      background: linear-gradient(to bottom, #d5b48c, #b68c5a);
+      margin: 0 auto 40px auto;
+      padding: 40px 20px;
+      border-radius: 20px;
+      width: 90%;
+      box-shadow: 10px 10px 20px rgba(0,0,0,0.2);
       position: relative;
     }
 
-    .book {
-      width: 130px;
-      height: 200px;
-      position: relative;
-      transform-style: preserve-3d;
-      transform: rotateY(0deg);
-      transition: transform 1s ease;
-      cursor: pointer;
-    }
-
-    .book.horizontal {
-      width: 200px;
-      height: 130px;
-    }
-
-    .book img {
-      width: 100%;
-      height: 100%;
-      object-fit: contain;
-      border-radius: 8px;
-      backface-visibility: hidden;
-      box-shadow: 3px 3px 5px rgba(0,0,0,0.3);
-    }
-
-    .book::before {
+    .shelf-container::before {
       content: "";
       position: absolute;
       top: 0;
-      left: -8px;
+      left: 0;
+      width: 10px;
+      height: 100%;
+      background-color: #8a6e52;
+      border-top-left-radius: 20px;
+      border-bottom-left-radius: 20px;
+    }
+
+    .shelf-slot {
+      width: 180px;
+      height: 260px;
+      margin: 20px;
+      perspective: 1000px;
+    }
+
+    .book {
+      width: 100%;
+      height: 100%;
+      background-color: white;
+      border-radius: 6px;
+      background-size: cover;
+      background-position: center;
+      box-shadow: 4px 4px 8px rgba(0,0,0,0.3);
+      transform: rotateY(-3deg);
+      transition: transform 0.4s ease;
+      position: relative;
+    }
+
+    .book::after {
+      content: "";
+      position: absolute;
+      right: -10px;
+      top: 0;
       width: 8px;
       height: 100%;
-      background: linear-gradient(to right, #ccc, #999);
-      border-radius: 2px 0 0 2px;
-      transform: rotateY(-90deg);
-      transform-origin: right;
+      background: linear-gradient(to right, #eee, #bbb);
+      border-top-right-radius: 6px;
+      border-bottom-right-radius: 6px;
     }
 
     .book:hover {
-      transform: rotateY(15deg);
-    }
-
-    .book:active {
-      animation: pageTurn 0.6s ease forwards;
-    }
-
-    @keyframes pageTurn {
-      0% { transform: rotateY(0deg); }
-      100% { transform: rotateY(-160deg); }
+      transform: scale(1.05) rotateY(0deg);
     }
 
     .empty-book {
-      width: 130px;
-      height: 200px;
-      background: repeating-linear-gradient(45deg, #f5f5dc, #f5f5dc 10px, #e0d8c3 10px, #e0d8c3 20px);
-      border-radius: 8px;
-      box-shadow: 2px 2px 5px rgba(0,0,0,0.2);
+      background: repeating-linear-gradient(
+        45deg,
+        #e3d5bc,
+        #e3d5bc 10px,
+        #e8d9c0 10px,
+        #e8d9c0 20px
+      );
     }
 
-    @media (max-width: 768px) {
-      .book, .empty-book {
-        width: 100px;
-        height: 150px;
+    @media screen and (max-width: 768px) {
+      .shelf-slot {
+        width: 120px;
+        height: 180px;
       }
 
-      .book.horizontal {
-        width: 150px;
-        height: 100px;
+      h1 {
+        font-size: 1.8em;
       }
 
-      .title {
-        font-size: 1.8rem;
-      }
-
-      .bookshelf {
-        padding: 20px;
+      .section-title {
+        font-size: 1.1em;
       }
     }
   </style>
 </head>
 <body>
+  <h1>강원진학지원센터 입시분석팀 서재</h1>
 
-  <div class="curtain">
-    <div class="lamp"></div>
-    <div class="title">강원진학지원센터 입시분석팀 서재</div>
-  </div>
-
-  <div class="bookshelf-section">
-    <h2>입시분석팀 자료</h2>
-    <div class="bookshelf">
-      <div class="shelf-slot">
-        <div class="book horizontal">
-          <img src="대입진학지도_데이터분석.png" alt="대입 진학지도">
-        </div>
-      </div>
-      <div class="shelf-slot">
-        <div class="book horizontal">
-          <img src="2025강원수시결과.png" alt="수시 결과분석">
-        </div>
-      </div>
-      <div class="shelf-slot">
-        <div class="empty-book"></div>
-      </div>
+  <div class="section-title">입시분석팀 자료</div>
+  <div class="shelf-container">
+    <div class="shelf-slot">
+      <a href="https://example.com/data-analysis" target="_blank">
+        <div class="book" style="background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/0/04/Book_icon.svg/768px-Book_icon.svg.png');"></div>
+      </a>
+    </div>
+    <div class="shelf-slot">
+      <a href="https://example.com/result-analysis" target="_blank">
+        <div class="book" style="background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/f/fc/Book_icon_1.svg/1024px-Book_icon_1.svg.png');"></div>
+      </a>
+    </div>
+    <div class="shelf-slot">
+      <div class="book empty-book"></div>
     </div>
   </div>
 
-  <div class="bookshelf-section">
-    <h2 style="color:#2baf6d;">면접분석팀 자료</h2>
-    <div class="bookshelf">
-      <div class="shelf-slot">
-        <div class="book">
-          <img src="2025셀프면접매뉴얼.png" alt="셀프면접">
-        </div>
-      </div>
-      <div class="shelf-slot">
-        <div class="empty-book"></div>
-      </div>
-      <div class="shelf-slot">
-        <div class="empty-book"></div>
-      </div>
+  <div class="section-title" style="color: #1b8d33;">면접분석팀 자료</div>
+  <div class="shelf-container">
+    <div class="shelf-slot">
+      <a href="https://example.com/self-interview" target="_blank">
+        <div class="book" style="background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/8/88/Open_book_nae_02.svg/1024px-Open_book_nae_02.svg.png');"></div>
+      </a>
+    </div>
+    <div class="shelf-slot">
+      <div class="book empty-book"></div>
+    </div>
+    <div class="shelf-slot">
+      <div class="book empty-book"></div>
     </div>
   </div>
-
 </body>
 </html>
