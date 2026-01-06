@@ -1,106 +1,128 @@
-# 최종 HTML 코드: 위 서재는 입시분석팀 자료, 아래 서재는 면접분석팀 자료
-bookshelf_html = """
 <!DOCTYPE html>
 <html lang="ko">
 <head>
   <meta charset="UTF-8" />
-  <title>강원진학지원센터 자료집</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>강원진학지원센터 입시분석팀 자료집</title>
   <style>
     body {
-      font-family: 'Pretendard', 'Noto Sans KR', sans-serif;
       margin: 0;
       padding: 0;
-      background: #f2f3f7;
+      background: #f4f4f4;
+      font-family: 'Segoe UI', '맑은 고딕', sans-serif;
     }
 
-    h1 {
+    header {
+      background: linear-gradient(to right, #0f4c81, #2ca4ab);
+      color: white;
+      padding: 30px 0;
       text-align: center;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+    }
+
+    header h1 {
+      margin: 0;
       font-size: 2.5rem;
-      margin: 40px 0 10px 0;
-      color: #0b4870;
-      text-shadow: 2px 2px 5px rgba(0,0,0,0.1);
+      letter-spacing: 2px;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
     }
 
-    h2 {
-      text-align: center;
-      font-size: 1.5rem;
-      margin: 10px 0 20px 0;
-      color: #444;
+    .bookshelf-label {
+      text-align: left;
+      font-size: 1.2rem;
+      font-weight: bold;
+      color: #4b3b2b;
+      margin: 40px 80px 10px;
     }
 
     .shelf {
       display: flex;
       justify-content: center;
-      gap: 60px;
-      padding: 30px 0;
-      background: #d8cab3;
-      margin: 30px auto;
-      width: 90%;
-      border-radius: 12px;
-      box-shadow: 0 8px 0 #b9ab91;
-      flex-wrap: wrap;
+      align-items: flex-end;
+      background: url('https://www.transparenttextures.com/patterns/wood-pattern.png');
+      background-color: #d2b48c;
+      border: 5px solid #a67c52;
+      border-radius: 10px;
+      box-shadow: 5px 5px 10px rgba(0,0,0,0.2);
+      padding: 40px;
+      margin: 20px 60px;
+      min-height: 300px;
+      position: relative;
     }
 
     .book {
-      width: 140px;
+      width: 150px;
+      margin: 0 25px;
       text-align: center;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      cursor: pointer;
     }
 
     .book img {
       width: 100%;
       height: auto;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-      border-radius: 10px;
-      transition: transform 0.2s;
+      border-radius: 8px;
+      box-shadow: 0 6px 10px rgba(0,0,0,0.3);
+      transition: transform 0.3s ease;
     }
 
-    .book img:hover {
+    .book:hover img {
       transform: scale(1.05);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.4);
     }
 
     .book a {
       text-decoration: none;
-      color: #001199;
+      color: #1a237e;
       font-weight: bold;
       display: block;
       margin-top: 10px;
+      font-size: 0.95rem;
+    }
+
+    footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: #777;
+      padding: 30px 0;
     }
   </style>
 </head>
 <body>
-  <h1>📚 강원진학지원센터 자료집</h1>
 
-  <h2>입시분석팀 자료</h2>
+  <header>
+    <h1>📚 강원진학지원센터 입시분석팀 자료집</h1>
+  </header>
+
+  <div class="bookshelf-label">📘 입시분석팀 자료</div>
   <div class="shelf">
     <div class="book">
-      <a href="cover2.png" target="_blank">
-        <img src="cover2.png" alt="대입 진학지도를 위한 데이터 분석" />
-        <span>대입 진학지도를 위한 데이터 분석</span>
+      <a href="https://docs.google.com/presentation/d/1T26OFNNdvBBD3O7leLhT68qftzk_AbO709cOSje4hsc/edit?usp=sharing" target="_blank">
+        <img src="cover2.png" alt="데이터 분석">
+        대입 진학지도를 위한<br/>데이터 분석
       </a>
     </div>
     <div class="book">
-      <a href="cover3.png" target="_blank">
-        <img src="cover3.png" alt="2025 강원 수시 결과분석" />
-        <span>2025 강원 수시 결과분석</span>
+      <a href="https://docs.google.com/presentation/d/1ujD7QoptoLjP3iveauwLa7apG8KF3_SY6yftzbMSCBE/edit?usp=sharing" target="_blank">
+        <img src="cover3.png" alt="수시 결과 분석">
+        2025 강원 수시 결과분석
       </a>
     </div>
   </div>
 
-  <h2>면접분석팀 자료</h2>
+  <div class="bookshelf-label">📗 면접분석팀 자료</div>
   <div class="shelf">
     <div class="book">
-      <a href="cover1.png" target="_blank">
-        <img src="cover1.png" alt="2025 셀프면접 매뉴얼" />
-        <span>2025 셀프면접 매뉴얼</span>
+      <a href="https://drive.google.com/file/d/1nYrZf_yZYRfC0LjS5SyWaILAQY0V7Wi5/view?usp=sharing" target="_blank">
+        <img src="cover1.png" alt="셀프면접 매뉴얼">
+        2025 셀프면접 매뉴얼
       </a>
     </div>
   </div>
+
+  <footer>
+    ⓒ 2026 강원진학지원센터 입시분석팀. All rights reserved.
+  </footer>
+
 </body>
 </html>
-"""
-
-# 저장
-with open("/mnt/data/index.html", "w", encoding="utf-8") as f:
-    f.write(bookshelf_html)
-
-"/mnt/data/index.html"
