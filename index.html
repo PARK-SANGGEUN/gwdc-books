@@ -1,128 +1,212 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
   <title>강원진학지원센터 입시분석팀 서재</title>
   <style>
     body {
-      font-family: "Pretendard", sans-serif;
-      background: linear-gradient(to bottom, #e4f0ff, #ffffff);
       margin: 0;
-      padding: 0;
-      color: #333;
+      font-family: 'Segoe UI', 'Apple SD Gothic Neo', sans-serif;
+      background: linear-gradient(to bottom, #e3f2fd, #fff);
     }
 
-    h1 {
+    header {
       text-align: center;
-      padding: 40px 20px 20px;
-      font-size: 2.5rem;
-      color: #0a3d62;
-      text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
-    }
-
-    .shelf-container {
-      display: flex;
-      flex-direction: column;
-      gap: 50px;
-      padding: 20px 40px;
-    }
-
-    .shelf-title {
-      font-size: 1.4rem;
-      margin-bottom: 10px;
-      padding-left: 10px;
+      padding: 30px 20px 20px;
+      font-size: 2.5em;
       font-weight: bold;
-      display: flex;
-      align-items: center;
-      gap: 8px;
+      color: #004d99;
+      text-shadow: 2px 2px 4px #aaa;
+      background-image: url('https://www.transparenttextures.com/patterns/curtain.png');
+      background-size: cover;
+      background-position: top;
     }
 
-    .icon {
-      font-size: 1rem;
+    header::before {
+      content: "📚";
+      font-size: 1.2em;
+      margin-right: 10px;
     }
 
-    .shelf {
-      background: linear-gradient(to bottom, #d1bfa3 0%, #bfa780 100%);
-      border: 6px solid #8b7355;
-      border-radius: 12px;
-      padding: 30px 30px 60px;
-      box-shadow: 0px 8px 18px rgba(0,0,0,0.2);
+    .bookshelf-section {
+      margin: 30px auto;
+      max-width: 1200px;
+    }
+
+    h2 {
+      font-size: 1.3em;
+      color: #333;
+      padding-left: 15px;
+      margin-bottom: 10px;
+    }
+
+    h2::before {
+      content: "🔷";
+      margin-right: 8px;
+    }
+
+    .bookshelf {
       display: flex;
       justify-content: space-around;
-      align-items: flex-end;
+      align-items: flex-start;
+      flex-wrap: wrap;
+      background: linear-gradient(to bottom, #c9a368, #b68949);
+      border: 4px solid #8d6e45;
+      border-radius: 8px;
+      padding: 40px 20px;
+      box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2) inset;
       position: relative;
-      height: 320px;
+      min-height: 320px;
     }
 
-    .divider {
-      width: 6px;
-      background-color: #a68b65;
-      height: 100%;
+    .bookshelf::before {
+      content: "";
       position: absolute;
       top: 0;
-      box-shadow: inset 0 0 4px rgba(0,0,0,0.1);
+      bottom: 0;
+      width: 4px;
+      background-color: #a67c52;
+      box-shadow: 1px 1px 3px #0004;
     }
 
-    .divider.left { left: 33.33%; }
-    .divider.right { left: 66.66%; }
+    .bookshelf > div {
+      width: 180px;
+      margin: 20px;
+      position: relative;
+      transform: rotateY(-2deg);
+    }
 
     .book {
-      width: 120px;
-      height: 180px;
-      background: white;
-      border-radius: 8px 1px 1px 8px;
-      box-shadow: 6px 4px 10px rgba(0,0,0,0.3);
-      transform: perspective(600px) rotateY(-4deg);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      overflow: hidden;
+      width: 100%;
+      height: auto;
+      perspective: 1000px;
       transition: transform 0.3s ease;
     }
 
     .book:hover {
-      transform: scale(1.05) perspective(600px) rotateY(-2deg);
+      transform: scale(1.05);
     }
 
-    .book img {
-      height: 100%;
-      width: auto;
+    .book .cover {
+      width: 100%;
+      aspect-ratio: 3 / 4.5;
       object-fit: cover;
+      border-radius: 5px;
+      box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.3), -2px 0 5px rgba(0, 0, 0, 0.1) inset;
+      background-color: #fff;
+      border: 1px solid #ddd;
+      display: block;
+    }
+
+    .book-label {
+      text-align: center;
+      margin-top: 8px;
+      font-size: 0.9em;
+      font-weight: 600;
+      color: #003366;
     }
 
     .empty-book {
       background: repeating-linear-gradient(
         45deg,
-        #e6d8c3,
-        #e6d8c3 10px,
-        #d5c3a8 10px,
-        #d5c3a8 20px
+        #e0cba9,
+        #e0cba9 10px,
+        #d6b98d 10px,
+        #d6b98d 20px
       );
+      width: 100%;
+      aspect-ratio: 3 / 4.5;
+      border-radius: 5px;
+      box-shadow: inset -2px 0 4px #bbb, 2px 2px 5px #999;
+    }
+
+    .divider {
+      width: 6px;
+      background-color: #a67c52;
+      margin: 0 10px;
+      border-radius: 3px;
+      height: 100%;
+    }
+
+    footer {
+      text-align: center;
+      font-size: 0.9em;
+      color: #666;
+      padding: 30px;
+    }
+
+    /* 커튼 효과 */
+    .curtain {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 150px;
+      background: radial-gradient(#dcdcdc, #bbb);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+      z-index: -1;
+    }
+
+    .spotlight {
+      position: absolute;
+      top: -80px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 300px;
+      height: 300px;
+      background: radial-gradient(circle at center, rgba(255,255,200,0.3), transparent 80%);
+      border-radius: 50%;
+      z-index: 0;
     }
   </style>
 </head>
 <body>
-  <h1>📚 강원진학지원센터 입시분석팀 서재</h1>
+  <div class="curtain"></div>
 
-  <div class="shelf-container">
-    <div class="shelf-title"><span class="icon">🔷</span> 입시분석팀 자료</div>
-    <div class="shelf">
-      <div class="book"><img src="cover2.png" alt="대입 진학지도" /></div>
-      <div class="book"><img src="cover3.png" alt="수시 결과분석" /></div>
-      <div class="divider left"></div>
-      <div class="divider right"></div>
-      <div class="book empty-book"></div>
-      <div class="book empty-book"></div>
+  <header>강원진학지원센터 입시분석팀 서재</header>
+
+  <div class="bookshelf-section">
+    <h2>입시분석팀 자료</h2>
+    <div class="bookshelf">
+      <div class="book">
+        <a href="https://docs.google.com/presentation/d/1T26OFNNdvBBD3O7leLhT68qftzk_AbO709cOSje4hsc/edit?usp=sharing" target="_blank">
+          <img class="cover" src="https://raw.githubusercontent.com/PARK-SANGGEUN/gwdc-books/main/cover2.png" alt="데이터분석" />
+        </a>
+      </div>
+      <div class="book">
+        <a href="https://docs.google.com/presentation/d/1ujD7QoptoLjP3iveauwLa7apG8KF3_SY6yftzbMSCBE/edit?usp=sharing" target="_blank">
+          <img class="cover" src="https://raw.githubusercontent.com/PARK-SANGGEUN/gwdc-books/main/cover3.png" alt="수시분석" />
+        </a>
+      </div>
+      <div class="book">
+        <div class="empty-book"></div>
+      </div>
+      <div class="book">
+        <div class="empty-book"></div>
+      </div>
     </div>
-    <div class="shelf-title"><span class="icon">🟩</span> 면접분석팀 자료</div>
-    <div class="shelf">
-      <div class="book"><img src="cover1.png" alt="셀프면접 매뉴얼" /></div>
-      <div class="divider left"></div>
-      <div class="divider right"></div>
-      <div class="book empty-book"></div>
-      <div class="book empty-book"></div>
-      <div class="book empty-book"></div>
+
+    <h2 style="margin-top:40px;">면접분석팀 자료</h2>
+    <div class="bookshelf">
+      <div class="book">
+        <a href="https://docs.google.com/presentation/d/1T26OFNNdvBBD3O7leLhT68qftzk_AbO709cOSje4hsc/edit?usp=sharing" target="_blank">
+          <img class="cover" src="https://raw.githubusercontent.com/PARK-SANGGEUN/gwdc-books/main/cover1.png" alt="셀프면접 매뉴얼" />
+        </a>
+      </div>
+      <div class="book">
+        <div class="empty-book"></div>
+      </div>
+      <div class="book">
+        <div class="empty-book"></div>
+      </div>
+      <div class="book">
+        <div class="empty-book"></div>
+      </div>
     </div>
   </div>
+
+  <footer>
+    ⓒ 2026 강원진학지원센터 입시분석팀. All rights reserved.
+  </footer>
 </body>
 </html>
