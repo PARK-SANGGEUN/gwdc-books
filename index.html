@@ -1,3 +1,6 @@
+from IPython.display import display, HTML
+
+html_code = """
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -7,88 +10,138 @@
     body {
       margin: 0;
       padding: 0;
-      background: #f1f3f6;
+      background: linear-gradient(to bottom, #fdfdfd, #eef4f9);
       font-family: 'Segoe UI', 'Noto Sans KR', sans-serif;
+      color: #333;
     }
 
     header {
+      background: #ffffff;
+      padding: 40px 20px 30px;
       text-align: center;
-      padding: 60px 20px 30px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+      position: relative;
+    }
+
+    header::before, header::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      width: 80px;
+      background: radial-gradient(ellipse at center, #e0e0e0 0%, #ffffff 70%);
+      z-index: -1;
+    }
+
+    header::before {
+      left: 0;
+      border-top-right-radius: 60px;
+      border-bottom-right-radius: 60px;
+    }
+
+    header::after {
+      right: 0;
+      border-top-left-radius: 60px;
+      border-bottom-left-radius: 60px;
     }
 
     header h1 {
-      font-size: 2.8rem;
+      font-size: 3rem;
+      font-weight: 800;
       color: #1a237e;
-      text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
-      letter-spacing: 1px;
-      background: linear-gradient(to right, #1a237e, #3f51b5);
+      text-shadow: 2px 2px 5px rgba(0,0,0,0.1);
+      background: linear-gradient(to right, #3f51b5, #00bcd4);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
-      font-weight: 800;
-      margin: 0;
+      padding: 10px;
+      border-radius: 12px;
     }
 
-    .shelf {
-      width: 100%;
-      max-width: 1200px;
-      margin: 40px auto;
-      display: flex;
-      justify-content: center;
+    .bookshelf-bg {
+      background-image: url('https://images.unsplash.com/photo-1590502593741-bd3154a80a1d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80');
+      background-size: cover;
+      background-position: center;
+      padding: 60px 20px;
+    }
+
+    .shelves {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
       gap: 40px;
-      flex-wrap: wrap;
-      padding: 0 20px;
-      position: relative;
+      max-width: 1200px;
+      margin: 0 auto;
     }
 
     .book {
-      width: 200px;
-      text-align: center;
-      position: relative;
+      background: white;
+      border-radius: 16px;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+      overflow: hidden;
+      transition: transform 0.3s;
+    }
+
+    .book:hover {
+      transform: translateY(-10px);
     }
 
     .book img {
       width: 100%;
-      border-radius: 10px;
-      box-shadow: 0 8px 16px rgba(0,0,0,0.15);
-      transition: transform 0.3s ease;
-    }
-
-    .book img:hover {
-      transform: translateY(-10px);
+      display: block;
+      border-bottom: 1px solid #ddd;
     }
 
     .book p {
-      margin-top: 12px;
+      text-align: center;
+      padding: 12px;
       font-weight: 600;
-      font-size: 15px;
-      color: #333;
+      font-size: 14px;
+      color: #1a237e;
     }
 
-    .shelf::after {
-      content: '';
-      position: absolute;
-      bottom: -15px;
+    .curtain {
+      position: fixed;
+      top: 0;
       left: 0;
-      right: 0;
-      height: 20px;
-      background: #d6d6d6;
-      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-      z-index: -1;
+      width: 100vw;
+      height: 100vh;
+      pointer-events: none;
+      background: linear-gradient(to bottom, rgba(255,255,255,0.5), rgba(255,255,255,0.2));
+      z-index: -2;
     }
   </style>
 </head>
 <body>
+  <div class="curtain"></div>
+
   <header>
-    <h1>📘 강원진학지원센터 입시분석팀 자료집</h1>
+    <h1>📚 강원진학지원센터 입시분석팀 자료집</h1>
   </header>
 
-  <section class="shelf">
-    <div class="book">
-      <a href="https://drive.google.com/uc?export=download&id=1nYrZf_yZYRfC0LjS5SyWaILAQY0V7Wi5" target="_blank">
-        <img src="cover1.png" alt="2025 셀프면접 매뉴얼">
-      </a>
-      <p>2025 셀프면접 매뉴얼</p>
+  <div class="bookshelf-bg">
+    <div class="shelves">
+      <div class="book">
+        <a href="https://drive.google.com/uc?export=download&id=1nYrZf_yZYRfC0LjS5SyWaILAQY0V7Wi5" target="_blank">
+          <img src="cover1.png" alt="2025 셀프면접 매뉴얼">
+          <p>2025 셀프면접 매뉴얼</p>
+        </a>
+      </div>
+      <div class="book">
+        <a href="https://docs.google.com/presentation/d/1T26OFNNdvBBD3O7leLhT68qftzk_AbO709cOSje4hsc/edit?usp=sharing" target="_blank">
+          <img src="cover2.png" alt="대입 진학지도를 위한 데이터 분석">
+          <p>대입 진학지도를 위한 데이터 분석</p>
+        </a>
+      </div>
+      <div class="book">
+        <a href="https://docs.google.com/presentation/d/1ujD7QoptoLjP3iveauwLa7apG8KF3_SY6yftzbMSCBE/edit?usp=sharing" target="_blank">
+          <img src="cover3.png" alt="2025 강원 수시 결과분석">
+          <p>2025 강원 수시 결과분석</p>
+        </a>
+      </div>
     </div>
-  </section>
+  </div>
 </body>
 </html>
+"""
+
+# Display the result
+display(HTML(html_code))
