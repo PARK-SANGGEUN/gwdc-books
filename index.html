@@ -1,159 +1,245 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>강원진학지원센터 입시분석팀 서재</title>
-  <style>
-    body {
-      margin: 0;
-      font-family: 'Arial', sans-serif;
-      background: linear-gradient(to bottom, #edf3fb, #fefefe);
-    }
+<meta charset="UTF-8">
+<title>강원진학지원센터 입시분석팀 서재</title>
 
-    h1 {
-      text-align: center;
-      font-size: 2.5em;
-      color: #0d47a1;
-      text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
-      margin-top: 40px;
-      margin-bottom: 20px;
-    }
+<style>
 
-    .section-title {
-      font-size: 1.4em;
-      font-weight: bold;
-      margin: 30px 0 10px 30px;
-      display: flex;
-      align-items: center;
-      color: #444;
-    }
+body{
+  margin:0;
+  background:#d8e3ec;
+  font-family: "Apple SD Gothic Neo","Segoe UI",Pretendard,sans-serif;
+}
 
-    .section-title::before {
-      content: '📘';
-      margin-right: 10px;
-    }
+/* ========================== 헤더 ======================= */
 
-    .shelf-container {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      background: linear-gradient(to bottom, #d5b48c, #b68c5a);
-      margin: 0 auto 40px auto;
-      padding: 40px 20px;
-      border-radius: 20px;
-      width: 90%;
-      box-shadow: 10px 10px 20px rgba(0,0,0,0.2);
-      position: relative;
-    }
+.header{
+  text-align:center;
+  padding:40px 10px 20px;
+  font-size:38px;
+  font-weight:900;
+  color:#234b7b;
+  text-shadow:0 3px 12px rgba(0,0,0,.25);
+  background:linear-gradient(#fafafa,#e9eef4);
+  border-bottom:4px solid #c7cfd9;
+}
 
-    .shelf-container::before {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 10px;
-      height: 100%;
-      background-color: #8a6e52;
-      border-top-left-radius: 20px;
-      border-bottom-left-radius: 20px;
-    }
+.header span{
+  background:linear-gradient(90deg,#3f79ff,#32c5ff);
+  -webkit-background-clip:text;
+  color:transparent;
+}
 
-    .shelf-slot {
-      width: 180px;
-      height: 260px;
-      margin: 20px;
-      perspective: 1000px;
-    }
+/* ====================== 커튼 & 조명 ===================== */
 
-    .book {
-      width: 100%;
-      height: 100%;
-      background-color: white;
-      border-radius: 6px;
-      background-size: cover;
-      background-position: center;
-      box-shadow: 4px 4px 8px rgba(0,0,0,0.3);
-      transform: rotateY(-3deg);
-      transition: transform 0.4s ease;
-      position: relative;
-    }
+.curtain{
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:140px;
+  background:repeating-linear-gradient(90deg,#ffffff,#f3f3f3 40px,#ffffff 80px);
+  box-shadow:0 10px 25px rgba(0,0,0,.2);
+  z-index:-1;
+}
 
-    .book::after {
-      content: "";
-      position: absolute;
-      right: -10px;
-      top: 0;
-      width: 8px;
-      height: 100%;
-      background: linear-gradient(to right, #eee, #bbb);
-      border-top-right-radius: 6px;
-      border-bottom-right-radius: 6px;
-    }
+.light{
+  position:absolute;
+  top:120px;
+  left:50%;
+  transform:translateX(-50%);
+  width:420px;
+  height:420px;
+  pointer-events:none;
+  background:radial-gradient(circle at center, rgba(255,240,190,.6) 0%, rgba(255,240,190,0.05) 65%, transparent 80%);
+  border-radius:50%;
+  filter:blur(2px);
+  z-index:-1;
+}
 
-    .book:hover {
-      transform: scale(1.05) rotateY(0deg);
-    }
+/* ====================== 책장 ======================= */
 
-    .empty-book {
-      background: repeating-linear-gradient(
-        45deg,
-        #e3d5bc,
-        #e3d5bc 10px,
-        #e8d9c0 10px,
-        #e8d9c0 20px
-      );
-    }
+.shelf-box{
+  max-width:1200px;
+  margin:40px auto;
+}
 
-    @media screen and (max-width: 768px) {
-      .shelf-slot {
-        width: 120px;
-        height: 180px;
-      }
+.shelf-title{
+  font-size:20px;
+  font-weight:800;
+  margin:5px 10px 15px;
+  color:#2d3748;
+}
 
-      h1 {
-        font-size: 1.8em;
-      }
+.bookshelf{
+  background:linear-gradient(#c9b087,#b79a6b);
+  border-radius:14px;
+  border:5px solid #8a6b3e;
+  box-shadow: inset 0 20px 40px rgba(0,0,0,.25), 0 10px 30px rgba(0,0,0,.35);
+  padding:40px 25px 60px;
+  margin-bottom:40px;
+  position:relative;
+}
 
-      .section-title {
-        font-size: 1.1em;
-      }
-    }
-  </style>
+/* 책장 옆면 */
+.bookshelf::after{
+  content:"";
+  position:absolute;
+  right:-22px;
+  top:0;
+  width:22px;
+  height:100%;
+  background:#7b6035;
+  box-shadow: inset 0 0 10px rgba(0,0,0,.4);
+  transform:skewY(-5deg);
+}
+
+/* 칸막이 */
+.divider{
+  position:absolute;
+  top:20px;
+  bottom:20px;
+  width:10px;
+  background:linear-gradient(#8a6b3e,#6b4e2c);
+  box-shadow: inset 0 0 8px rgba(0,0,0,.5);
+  border-radius:5px;
+}
+
+.d1{left:33%}
+.d2{left:66%}
+
+/* ====================== 책 ======================= */
+
+.row{
+  display:flex;
+  justify-content:space-around;
+  align-items:center;
+}
+
+/* 책 전체 3D */
+.book{
+  position:relative;
+  transform-style:preserve-3d;
+  transform:perspective(800px) rotateY(-9deg);
+  transition:.3s;
+  cursor:pointer;
+}
+
+.book:hover{
+  transform:perspective(800px) rotateY(-2deg) scale(1.05);
+}
+
+/* 책 표지 */
+.cover{
+  width:260px;
+  height:360px;
+  object-fit:contain;
+  border-radius:8px;
+  background:white;
+  border:2px solid #ddd;
+  box-shadow:0 15px 25px rgba(0,0,0,.3);
+}
+
+/* 책 옆면 */
+.book::before{
+  content:"";
+  position:absolute;
+  top:0;
+  right:-18px;
+  width:18px;
+  height:100%;
+  background:repeating-linear-gradient(90deg,#eae7dd,#dcd5c6 3px,#f2efe6 6px);
+  border-radius:0 6px 6px 0;
+  box-shadow: inset 0 0 8px rgba(0,0,0,.35);
+  transform:skewY(-3deg);
+}
+
+/* 가로형 책 */
+.landscape .cover{
+  width:340px;
+  height:240px;
+}
+
+/* 빈 책 */
+.empty{
+  width:220px;
+  height:330px;
+  background:repeating-linear-gradient(45deg,#e8dcc5,#d8c2a1 20px,#e8dcc5 40px);
+  border-radius:8px;
+  box-shadow: inset 0 0 15px rgba(0,0,0,.4), 0 20px 25px rgba(0,0,0,.4);
+}
+
+footer{
+  text-align:center;
+  padding:30px;
+  color:#444;
+}
+</style>
 </head>
+
 <body>
-  <h1>강원진학지원센터 입시분석팀 서재</h1>
 
-  <div class="section-title">입시분석팀 자료</div>
-  <div class="shelf-container">
-    <div class="shelf-slot">
-      <a href="https://example.com/data-analysis" target="_blank">
-        <div class="book" style="background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/0/04/Book_icon.svg/768px-Book_icon.svg.png');"></div>
-      </a>
-    </div>
-    <div class="shelf-slot">
-      <a href="https://example.com/result-analysis" target="_blank">
-        <div class="book" style="background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/f/fc/Book_icon_1.svg/1024px-Book_icon_1.svg.png');"></div>
-      </a>
-    </div>
-    <div class="shelf-slot">
-      <div class="book empty-book"></div>
-    </div>
-  </div>
+<div class="curtain"></div>
+<div class="light"></div>
 
-  <div class="section-title" style="color: #1b8d33;">면접분석팀 자료</div>
-  <div class="shelf-container">
-    <div class="shelf-slot">
-      <a href="https://example.com/self-interview" target="_blank">
-        <div class="book" style="background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/8/88/Open_book_nae_02.svg/1024px-Open_book_nae_02.svg.png');"></div>
-      </a>
-    </div>
-    <div class="shelf-slot">
-      <div class="book empty-book"></div>
-    </div>
-    <div class="shelf-slot">
-      <div class="book empty-book"></div>
-    </div>
+<div class="header"><span>강원진학지원센터 입시분석팀 서재</span></div>
+
+
+
+<!-- ================== 입시분석팀 ================== -->
+
+<div class="shelf-box">
+<div class="shelf-title">입시분석팀 자료</div>
+
+<div class="bookshelf">
+
+  <div class="divider d1"></div>
+  <div class="divider d2"></div>
+
+  <div class="row">
+
+    <!-- 가로형 자동 적용 -->
+    <a class="book landscape" href="https://docs.google.com/presentation/d/1T26OFNNdvBBD3O7leLhT68qftzk_AbO709cOSje4hsc/edit?usp=sharing" target="_blank">
+      <img class="cover" src="https://raw.githubusercontent.com/PARK-SANGGEUN/gwdc-books/main/cover2.png">
+    </a>
+
+    <a class="book landscape" href="https://docs.google.com/presentation/d/1ujD7QoptoLjP3iveauwLa7apG8KF3_SY6yftzbMSCBE/edit?usp=sharing" target="_blank">
+      <img class="cover" src="https://raw.githubusercontent.com/PARK-SANGGEUN/gwdc-books/main/cover3.png">
+    </a>
+
+    <div class="empty"></div>
+
   </div>
+</div>
+
+
+
+<!-- ================== 면접분석팀 ================== -->
+
+<div class="shelf-title">면접분석팀 자료</div>
+
+<div class="bookshelf">
+
+  <div class="divider d1"></div>
+  <div class="divider d2"></div>
+
+  <div class="row">
+
+    <a class="book" href="https://docs.google.com/presentation/d/1nYrZf_yZYRfC0LjS5SyWaILAQY0V7Wi5/edit?usp=sharing" target="_blank">
+      <img class="cover" src="https://raw.githubusercontent.com/PARK-SANGGEUN/gwdc-books/main/cover1.png">
+    </a>
+
+    <div class="empty"></div>
+    <div class="empty"></div>
+
+  </div>
+</div>
+</div>
+
+<footer>
+ⓒ 강원진학지원센터 입시분석팀 서재
+</footer>
+
 </body>
 </html>
