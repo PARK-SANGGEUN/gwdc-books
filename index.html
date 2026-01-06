@@ -1,6 +1,7 @@
 from IPython.display import display, HTML
 
-html_code = """
+# 업데이트된 책장 스타일의 HTML 코드
+bookshelf_html = """
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -10,9 +11,8 @@ html_code = """
     body {
       margin: 0;
       padding: 0;
-      background: linear-gradient(to bottom, #fdfdfd, #eef4f9);
+      background: #f5f6fa;
       font-family: 'Segoe UI', 'Noto Sans KR', sans-serif;
-      color: #333;
     }
 
     header {
@@ -20,63 +20,47 @@ html_code = """
       padding: 40px 20px 30px;
       text-align: center;
       box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-      position: relative;
-    }
-
-    header::before, header::after {
-      content: '';
-      position: absolute;
+      position: sticky;
       top: 0;
-      bottom: 0;
-      width: 80px;
-      background: radial-gradient(ellipse at center, #e0e0e0 0%, #ffffff 70%);
-      z-index: -1;
-    }
-
-    header::before {
-      left: 0;
-      border-top-right-radius: 60px;
-      border-bottom-right-radius: 60px;
-    }
-
-    header::after {
-      right: 0;
-      border-top-left-radius: 60px;
-      border-bottom-left-radius: 60px;
+      z-index: 10;
     }
 
     header h1 {
-      font-size: 3rem;
+      font-size: 2.5rem;
       font-weight: 800;
       color: #1a237e;
       text-shadow: 2px 2px 5px rgba(0,0,0,0.1);
       background: linear-gradient(to right, #3f51b5, #00bcd4);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
-      padding: 10px;
+      margin: 0;
+    }
+
+    .bookshelf {
+      padding: 60px 40px;
+      display: flex;
+      flex-direction: column;
+      gap: 80px;
+    }
+
+    .shelf {
+      background: #e1d4c0;
+      padding: 20px;
       border-radius: 12px;
-    }
-
-    .bookshelf-bg {
-      background-image: url('https://images.unsplash.com/photo-1590502593741-bd3154a80a1d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80');
-      background-size: cover;
-      background-position: center;
-      padding: 60px 20px;
-    }
-
-    .shelves {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-      gap: 40px;
-      max-width: 1200px;
-      margin: 0 auto;
+      box-shadow: inset 0 -8px 0 rgba(0, 0, 0, 0.2);
+      display: flex;
+      justify-content: space-around;
+      align-items: flex-end;
+      height: 250px;
     }
 
     .book {
+      width: 120px;
       background: white;
-      border-radius: 16px;
-      box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+      border-radius: 8px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
       overflow: hidden;
+      text-align: center;
       transition: transform 0.3s;
     }
 
@@ -86,39 +70,33 @@ html_code = """
 
     .book img {
       width: 100%;
-      display: block;
-      border-bottom: 1px solid #ddd;
+      height: 160px;
+      object-fit: cover;
+      border-bottom: 1px solid #ccc;
     }
 
     .book p {
-      text-align: center;
-      padding: 12px;
-      font-weight: 600;
-      font-size: 14px;
+      font-size: 12px;
+      padding: 8px;
       color: #1a237e;
+      font-weight: bold;
     }
 
-    .curtain {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100vw;
-      height: 100vh;
-      pointer-events: none;
-      background: linear-gradient(to bottom, rgba(255,255,255,0.5), rgba(255,255,255,0.2));
-      z-index: -2;
+    footer {
+      text-align: center;
+      padding: 30px;
+      color: #888;
+      font-size: 0.8rem;
     }
   </style>
 </head>
 <body>
-  <div class="curtain"></div>
-
   <header>
     <h1>📚 강원진학지원센터 입시분석팀 자료집</h1>
   </header>
 
-  <div class="bookshelf-bg">
-    <div class="shelves">
+  <div class="bookshelf">
+    <div class="shelf">
       <div class="book">
         <a href="https://drive.google.com/uc?export=download&id=1nYrZf_yZYRfC0LjS5SyWaILAQY0V7Wi5" target="_blank">
           <img src="cover1.png" alt="2025 셀프면접 매뉴얼">
@@ -138,10 +116,19 @@ html_code = """
         </a>
       </div>
     </div>
+    <div class="shelf">
+      <div class="book"></div>
+      <div class="book"></div>
+      <div class="book"></div>
+    </div>
   </div>
+
+  <footer>
+    ⓒ 2026 강원진학지원센터 입시분석팀. All rights reserved.
+  </footer>
 </body>
 </html>
 """
 
-# Display the result
-display(HTML(html_code))
+# Display updated bookshelf design
+display(HTML(bookshelf_html))
