@@ -5,34 +5,63 @@
   <title>강원진학지원센터 입시분석팀 자료집</title>
   <style>
     body {
-      background-color: #f0f8ff;
-      font-family: 'Arial', sans-serif;
-      text-align: center;
-      padding: 40px;
+      background: linear-gradient(to bottom, #f8f9fc, #e3e8f0);
+      font-family: 'Pretendard', 'Noto Sans KR', sans-serif;
+      margin: 0;
+      padding: 40px 20px;
+      color: #1c1c1c;
     }
+
     h1 {
-      font-size: 2em;
-      color: #003366;
-      margin-bottom: 40px;
+      font-size: 2.4em;
+      color: #1e3a8a;
+      text-align: center;
+      margin-bottom: 50px;
     }
+
     .container {
       display: flex;
       justify-content: center;
+      flex-wrap: wrap;
+      gap: 40px;
     }
+
     .item {
-      width: 300px;
+      width: 280px;
+      background: white;
+      border-radius: 16px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+      padding: 20px;
+      transition: transform 0.3s ease;
     }
+
+    .item:hover {
+      transform: translateY(-6px);
+    }
+
     .item img {
       width: 100%;
       border-radius: 12px;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-      cursor: pointer;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
     }
+
     .item p {
-      margin-top: 10px;
+      margin-top: 15px;
       font-size: 16px;
-      font-weight: bold;
+      font-weight: 600;
+      text-align: center;
       color: #333;
+    }
+
+    a {
+      text-decoration: none;
+    }
+
+    @media (max-width: 600px) {
+      .container {
+        flex-direction: column;
+        align-items: center;
+      }
     }
   </style>
 </head>
@@ -42,9 +71,9 @@
   <div class="container">
     <div class="item">
       <a href="https://drive.google.com/uc?export=download&id=1nYrZf_yZYRfC0LjS5SyWaILAQY0V7Wi5" target="_blank">
-        <img src="cover.png" alt="2025 셀프면접 매뉴얼">
+        <img src="cover1.png" alt="2025 셀프면접 매뉴얼">
+        <p>2025 셀프면접 매뉴얼 (PDF)</p>
       </a>
-      <p>2025 셀프면접 매뉴얼 (PDF)</p>
     </div>
   </div>
 </body>
